@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Reloj con Javascript</title>
+<style>
+body{
+background: black;
+    }
+.reloj {
+  font-size: 80px;
+  color: rgb(4, 11, 135);
+  text-align: center;
+  -webkit-animation: reloj 1s ease-in-out infinite alternate;
+  -moz-animation: reloj 1s ease-in-out infinite alternate;
+  animation: reloj 1s ease-in-out infinite alternate;
+}
+
+@keyframes reloj {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+.logo {
+    display: flex;
+    justify-content: center;  
+    
+}
+</style>
+<script language="JavaScript">
+function mueveReloj(){
+    momentoActual = new Date()
+    hora = momentoActual.getHours()
+    minuto = momentoActual.getMinutes()
+    segundo = momentoActual.getSeconds()
+
+    str_segundo = new String (segundo)
+    if (str_segundo.length == 1)
+       segundo = "0" + segundo
+
+    str_minuto = new String (minuto)
+    if (str_minuto.length == 1)
+       minuto = "0" + minuto
+
+    str_hora = new String (hora)
+    if (str_hora.length == 1)
+       hora = "0" + hora
+
+    horaImprimible = hora + " : " + minuto + " : " + segundo
+
+    document.form_reloj.reloj.value = horaImprimible
+
+    setTimeout("mueveReloj()",1000)
+}
+</script>
+</head>
+<div class="reloj">
+    <body onload="mueveReloj()">
+
+        Vemos aquí el reloj funcionando...
+        
+        <form name="form_reloj">
+        <input type="text" name="reloj" size="10" style="background-color : rgb(16, 103, 166); color : White; font-family : Verdana, Arial, Helvetica; font-size : 30pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
+        </form>
+</div>
+
+
+
+</body>
+
+<footer class="logo">
+    <img src="imagenes/logo.png">
+</footer>
+</html> 
+
